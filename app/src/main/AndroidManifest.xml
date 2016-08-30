@@ -17,6 +17,9 @@
         </activity>
         <service android:name=".MyService" />
         <service android:name=".MyIntentService" />
+        <service android:name=".LongRunningService" />
+
+        <receiver android:name=".AlarmReceiver" />
     </application>
 
 </manifest>

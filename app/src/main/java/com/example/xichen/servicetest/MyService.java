@@ -24,6 +24,9 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Intent intent = new Intent(this, LongRunningService.class);
+        startService(intent);
+
         Notification.Builder builder = new Notification.Builder(this);
 //        Notification notification = new Notification(R.mipmap.ic_launcher, "Notification comes",
 //                System.currentTimeMillis());
