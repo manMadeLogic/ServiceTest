@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this, LongRunningService.class);
+        startService(intent);
+
         startService = (Button) findViewById(R.id.start_service);
         stopService = (Button) findViewById(R.id.stop_service);
         bindService = (Button) findViewById(R.id.bind_service);
@@ -52,18 +55,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent commonIntent = new Intent(this, MyService.class);
         switch (v.getId()){
             case R.id.start_service:
-                Intent startIntent = new Intent(this, MyService.class);
-                startService(startIntent);
+//                Intent startIntent = new Intent(this, MyService.class);
+//                startService(startIntent);
+                startService(commonIntent);
                 break;
             case R.id.stop_service:
-                Intent stopIntent = new Intent(this, MyService.class);
-                stopService(stopIntent);
+//                Intent stopIntent = new Intent(this, MyService.class);
+//                stopService(stopIntent);
+                stopService(commonIntent);
                 break;
             case R.id.bind_service:
-                Intent bindIntent = new Intent(this, MyService.class);
-                bindService(bindIntent, connection, BIND_AUTO_CREATE);
+//                Intent bindIntent = new Intent(this, MyService.class);
+//                bindService(bindIntent, connection, BIND_AUTO_CREATE);
+                bindService(commonIntent, connection, BIND_AUTO_CREATE);
                 break;
             case R.id.unbind_service:
                 unbindService(connection);
